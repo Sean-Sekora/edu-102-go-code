@@ -5,9 +5,7 @@ go 1.19
 require (
 	github.com/stretchr/testify v1.8.1
 	go.temporal.io/sdk v1.19.0
-)
-
-require (
+	go.uber.org/zap v1.20.0
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/facebookgo/clock v0.0.0-20150410010913-600d898af40a // indirect
 	github.com/gogo/googleapis v1.4.1 // indirect
@@ -23,6 +21,7 @@ require (
 	github.com/stretchr/objx v0.5.0 // indirect
 	go.temporal.io/api v1.13.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
+	go.uber.org/multierr v1.7.0 // indirect
 	golang.org/x/net v0.1.0 // indirect
 	golang.org/x/sys v0.1.0 // indirect
 	golang.org/x/text v0.4.0 // indirect

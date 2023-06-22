@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"go.temporal.io/sdk/activity"
 	"io"
 	"net/http"
 	"net/url"
@@ -11,10 +12,9 @@ import (
 )
 
 func TranslateTerm(ctx context.Context, input TranslationActivityInput) (TranslationActivityOutput, error) {
-	// TODO Define an Activity logger
+	logger := activity.GetLogger(ctx)
 
-	// TODO log Activity invocation, at the Info level, and include the term being
-	//      translated and the language code as name-value pairs
+	logger.Info("Translating term", "LanguageCode", input.LanguageCode, "Term", input.Term)
 
 	lang := url.QueryEscape(input.LanguageCode)
 	term := url.QueryEscape(input.Term)
@@ -43,8 +43,7 @@ func TranslateTerm(ctx context.Context, input TranslationActivityInput) (Transla
 		return TranslationActivityOutput{}, errors.New(message)
 	}
 
-	// TODO  use the Debug level to log the successful translation and include the
-	//       translated term as a name-value pair
+	logger.Debug("Translation successful", "Translation", content)
 	output := TranslationActivityOutput{
 		Translation: content,
 	}
