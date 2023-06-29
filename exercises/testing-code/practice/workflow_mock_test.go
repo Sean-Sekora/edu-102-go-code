@@ -41,7 +41,8 @@ func TestSuccessfulTranslationWithMocks(t *testing.T) {
 	assert.True(t, env.IsWorkflowCompleted())
 
 	var result TranslationWorkflowOutput
-	env.GetWorkflowResult(&result)
+	err := env.GetWorkflowResult(&result)
+	assert.NoError(t, err)
 
 	assert.Equal(t, "Bonjour, Pierre", result.HelloMessage)
 	assert.Equal(t, "Au revoir, Pierre", result.GoodbyeMessage)
